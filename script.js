@@ -38,10 +38,10 @@ const commands = {
   help: () => "Commands: about, projects, contact, whoami, clear",
   whoami: () => "isaac@asmodeus:~$ builder of homelabs and AI agents",
   about: () => "Self-taught systems tinkerer. Runs a homelab (asmodeus), automates it with an AI agent, plays too much Deadlock.",
-  projects: () => "See the Projects section above, or type a repo name: slamminbot, whiteoutscheduler",
-  contact: () => "Reach me via GitHub: github.com/IsaacPark432",
-  slamminbot: () => "slamminbot -> github.com/IsaacPark432/slamminbot",
-  whiteoutscheduler: () => "WhiteOutScheduler -> github.com/IsaacPark432/WhiteOutScheduler",
+  projects: () => "See the Projects section above, or type: linkedin, resume",
+  contact: () => "Reach me via GitHub: github.com/IsaacPark432 or LinkedIn: linkedin.com/in/isaac-parker111",
+  linkedin: () => "linkedin.com/in/isaac-parker111",
+  resume: () => { window.open('resume.pdf', '_blank'); return "Opening resume.pdf..."; },
   clear: () => { term.innerHTML = ""; return null; }
 };
 
