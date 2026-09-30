@@ -145,6 +145,7 @@ h2::before { content: "// "; color: var(--text-dim); }
 .tab-btn {
   background: none;
   border: none;
+  outline: none;
   color: var(--text-dim);
   font-family: inherit;
   font-size: 0.95rem;
