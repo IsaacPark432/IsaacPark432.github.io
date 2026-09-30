@@ -10,12 +10,22 @@
 
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
   line-height: 1.6;
+}
+
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  display: block;
 }
 
 a { color: var(--ember); text-decoration: none; }
@@ -25,6 +35,7 @@ a:hover { text-decoration: underline; }
   max-width: 820px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
 }
 
 header.hero {
@@ -60,6 +71,7 @@ nav.links {
   display: flex;
   gap: 18px;
   font-size: 0.95rem;
+  flex-wrap: wrap;
 }
 
 section {
@@ -78,6 +90,85 @@ h2 {
 }
 
 h2::before { content: "// "; color: var(--text-dim); }
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- GitHub stats ---------- */
+.gh-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  text-align: center;
+}
+.gh-stat {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 8px;
+}
+.gh-num {
+  display: block;
+  font-size: 1.6rem;
+  color: var(--ember);
+  font-weight: bold;
+}
+.gh-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+.gh-error { grid-column: 1 / -1; color: var(--text-dim); }
+
+@media (max-width: 560px) {
+  .gh-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Tabs ---------- */
+.tab-bar {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 8px 4px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s ease;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--ember); }
+.tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 2px;
+  background: var(--ember);
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .project-grid {
   display: grid;
@@ -117,7 +208,43 @@ h2::before { content: "// "; color: var(--text-dim); }
   border-radius: 3px;
   padding: 2px 8px;
   margin-right: 6px;
+  margin-bottom: 4px;
 }
+
+/* ---------- Timeline (Experience tab) ---------- */
+.timeline {
+  position: relative;
+  padding-left: 22px;
+  border-left: 2px solid var(--border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 34px;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ember);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.timeline-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.timeline-role { color: var(--text); font-weight: bold; font-size: 1rem; }
+.timeline-org { color: var(--ember-dim); font-size: 0.88rem; }
+.timeline-date { color: var(--text-dim); font-size: 0.82rem; margin-left: auto; }
+.timeline-sub { color: var(--text-dim); font-style: italic; margin: 10px 0 4px; font-size: 0.88rem; }
+.timeline-item ul { margin: 0 0 4px; padding-left: 18px; color: var(--text-dim); font-size: 0.92rem; }
+.timeline-item li { margin-bottom: 4px; }
 
 .terminal {
   background: var(--bg-alt);

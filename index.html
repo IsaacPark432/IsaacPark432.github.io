@@ -3,51 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isaac Park</title>
-<meta name="description" content="Isaac Parker — homelab automation, AI agents, and self-hosted infrastructure.">
+<title>Isaac Parker</title>
+<meta name="description" content="Isaac Parker — QA/test engineer and systems builder. Hardware test automation, Python tooling, self-hosted infrastructure and AI agent orchestration.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <canvas id="bg-canvas"></canvas>
+
   <div class="container">
     <header class="hero">
-      <div class="prompt">visitor@isaacpark432.github.io:~$</div>
-      <h1>Isaac Park</h1>
+      <div class="prompt">visitor@isaacparker.dev:~$</div>
+      <h1>Isaac Parker</h1>
       <div class="subtitle"><span id="typed"></span></div>
       <nav class="links">
         <a href="https://github.com/IsaacPark432" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/isaac-parker111/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
+        <a href="#main-tabs">Projects</a>
         <a href="privacy.html">Privacy</a>
       </nav>
     </header>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="project-grid">
-        <div class="project">
-          <h3>Homelab</h3>
-          <p>Self-hosted Linux box ("asmodeus") running an open source hermes agent. Accessible at all times via Tailscale </p>
-          <div class="tags"><span>python</span><span>docker</span><span>self-hosted</span></div>
+    <section id="github-stats" class="reveal">
+      <div class="gh-stats" id="gh-stats">
+        <div class="gh-stat"><span class="gh-num" id="gh-repos">–</span><span class="gh-label">public repos</span></div>
+        <div class="gh-stat"><span class="gh-num" id="gh-stars">–</span><span class="gh-label">stars earned</span></div>
+        <div class="gh-stat"><span class="gh-num" id="gh-followers">–</span><span class="gh-label">followers</span></div>
+        <div class="gh-stat"><span class="gh-num" id="gh-lang">–</span><span class="gh-label">top language</span></div>
+      </div>
+    </section>
+
+    <section id="main-tabs" class="reveal">
+      <div class="tab-bar" role="tablist">
+        <button class="tab-btn active" data-tab="projects" role="tab" aria-selected="true">Projects</button>
+        <button class="tab-btn" data-tab="experience" role="tab" aria-selected="false">Experience</button>
+        <button class="tab-btn" data-tab="about" role="tab" aria-selected="false">About</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-projects" role="tabpanel">
+        <div class="project-grid">
+          <div class="project">
+            <h3>Homelab Automation Platform</h3>
+            <p>Self-hosted Linux server running an open-source AI agent framework for day-to-day automation: scheduled reporting, infrastructure monitoring, and task orchestration, reachable anywhere via Tailscale.</p>
+            <div class="tags"><span>python</span><span>docker</span><span>self-hosted</span><span>linux</span></div>
+          </div>
+          <div class="project">
+            <h3>M5Stack Live Status Display</h3>
+            <p>Custom firmware + Python daemon streaming live CPU/GPU/memory/disk telemetry to an M5Stack Core2 hardware display over USB, packaged as a themed systemd service with auto-recovery.</p>
+            <div class="tags"><span>micropython</span><span>systemd</span><span>embedded</span><span>hardware</span></div>
+          </div>
+          <div class="project">
+            <h3>Personal Finance Automation</h3>
+            <p>Pipeline that parses monthly bank/credit-card statement PDFs, extracts and categorizes transactions, and syncs them into a Google Sheets budget tracker — cross-checked against independent sources for accuracy.</p>
+            <div class="tags"><span>python</span><span>google-sheets-api</span><span>pdf-parsing</span><span>automation</span></div>
+          </div>
+          <div class="project">
+            <h3>Email Triage Pipeline</h3>
+            <p>Automated Gmail triage using a classification API to label, archive, and flag high-priority mail, with scheduled digest summaries — cutting manual inbox upkeep to near zero.</p>
+            <div class="tags"><span>python</span><span>gmail-api</span><span>ml-classification</span><span>cron</span></div>
+          </div>
         </div>
-        <div class="project">
-          <h3>M5Stack Homelab Display</h3>
-          <p>Custom firmware + daemon pushing live CPU/GPU/memory/disk stats to an M5Stack Core2 USB display, themed and running as a systemd service.</p>
-          <div class="tags"><span>micropython</span><span>systemd</span><span>hardware</span></div>
+      </div>
+
+      <div class="tab-panel" id="tab-experience" role="tabpanel">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-role">QA Engineer</span>
+              <span class="timeline-org">Ring / Amazon — Los Angeles, CA</span>
+              <span class="timeline-date">May 2022 – Present</span>
+            </div>
+            <p class="timeline-sub">Project: Battery Pack</p>
+            <ul>
+              <li>Designed and built custom hardware test rigs, including a Raspberry Pi–based system with UART communication and a programmable resistive load for controlled battery discharge testing.</li>
+              <li>Built comprehensive test suites supporting firmware development through system-level testing; migrated test scripts from Bash to Python for extensibility and coverage.</li>
+              <li>Tracked and measured power consumption throughout development to minimize loss and surface savings opportunities.</li>
+            </ul>
+            <p class="timeline-sub">Project: Ring Car Camera</p>
+            <ul>
+              <li>Supported a successful product launch through field testing and system-level testing up to release.</li>
+              <li>Led thermal characterization testing in high-heat environments, producing data that shaped the thermal policy shipped in all production dash cameras.</li>
+              <li>Managed an early-access tester cohort — assigning test plans, collecting sentiment, and analyzing feedback pre-launch.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-role">Engineering Intern</span>
+              <span class="timeline-org">Scener — Seattle, WA</span>
+              <span class="timeline-date">June 2020 – Jan 2021</span>
+            </div>
+            <ul>
+              <li>Identified and reported bugs across testing phases, working directly with end-users to root-cause issues.</li>
+              <li>Worked in an agile development environment on a web product serving 2M+ users.</li>
+              <li>Triaged high volumes of daily user tickets to surface key concerns for the engineering team.</li>
+              <li>Built an automated regression suite with Selenium + Python to streamline release testing.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-role">B.S. Computer Engineering</span>
+              <span class="timeline-org">Seattle University — Seattle, WA</span>
+              <span class="timeline-date">May 2021</span>
+            </div>
+            <ul>
+              <li>NCAA Division I Student-Athlete · IEEE Student Chapter Leader · SAAC Member · Undergraduate Student Researcher.</li>
+              <li><strong>Capstone:</strong> Electric Meter Simulation App — a Python phone application simulating simple and complex waveforms via a phone's audio jack, applying DSP and superposition concepts to help sales/test engineers demo products to customers.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-role">Skills</span>
+            </div>
+            <div class="tags">
+              <span>Python</span><span>C++</span><span>C</span><span>C#</span><span>Pytest</span>
+              <span>Hardware Bring-up</span><span>Thermal Testing</span><span>Data Analysis</span><span>Soldering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-about">
+        <div class="about-grid">
+          <p>QA/test engineer with a hardware-and-software background — I design test systems, write the tooling that runs them, and dig into the data they produce. Day to day that means building custom test rigs, automating regression suites, and chasing root causes from firmware up to the system level.</p>
+          <p>Outside of work I run a home server that hosts an AI agent for day-to-day automation — budget tracking, email triage, infrastructure monitoring — and build small hardware/software projects that remove tedious manual work.</p>
+          <p>Interested in: test automation, embedded systems, developer tooling, and agent-driven infrastructure.</p>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <div class="about-grid">
-        <p>I run a home server (<strong>asmodeus</strong>) that hosts an AI agent handling day-to-day automation — budget tracking, email triage, cron-scheduled reports to Discord — plus a second gaming rig (<strong>baal</strong>) for Deadlock.</p>
-        <p>Interested in: self-hosted infra, agent orchestration, and building small tools that remove tedious manual work.</p>
-      </div>
-    </section>
-
-    <section id="terminal-section">
+    <section id="terminal-section" class="reveal">
       <h2>Try it</h2>
       <div class="terminal" id="term-output">
         <div class="terminal-line">Type 'help' to see available commands.</div>
@@ -59,7 +146,7 @@
     </section>
 
     <footer>
-      &copy; 2026 Isaac Park · <a href="privacy.html">Privacy Policy</a> · <a href="https://github.com/IsaacPark432">GitHub</a> · <a href="https://www.linkedin.com/in/isaac-parker111/">LinkedIn</a>
+      &copy; 2026 Isaac Parker · <a href="privacy.html">Privacy Policy</a> · <a href="https://github.com/IsaacPark432">GitHub</a> · <a href="https://www.linkedin.com/in/isaac-parker111/">LinkedIn</a>
     </footer>
   </div>
   <script src="script.js"></script>
